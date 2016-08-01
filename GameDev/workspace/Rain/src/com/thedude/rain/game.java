@@ -5,7 +5,7 @@
 
  import javax.swing.JFrame;
 
- public class Game extends Canvas implements Runnable { //our class in sub-class of Canvas meaning its a component
+ public class game extends Canvas implements Runnable { //our class in sub-class of Canvas meaning its a component
  	private static final long serialVersionUID = 1L; //ITS a convention of Java just do it to remove game warning in the declaration of class
  	
  	//declaring the game frame resolution
@@ -18,7 +18,7 @@
  	private boolean running = false; //declare our running for the game loop later used in start and stop method
  	
  	//Class Constructor
- 	public Game() {
+ 	public game() {
  		Dimension size = new Dimension ( width * scale, height * scale ); // here we use the resolution params by creating Dimension object called size
  		setPreferredSize (size); //Canvas method
  		frame = new JFrame(); // creating the frame
@@ -47,7 +47,7 @@
 
 
  	public static void main(String[] args) {
- 		Game game = new Game();
+ 		game game = new game();
  		game.frame.setResizable(false); //we don't want our window to able to resize(graphical error):always the first think to apply to frame
  		game.frame.setTitle("Rain"); //title of our window
  		game.frame.add(game); //adds a component to our frame. fills the window with something. game in this case
