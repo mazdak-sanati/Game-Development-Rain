@@ -54,9 +54,10 @@ import javax.swing.JFrame;
  	public void render(){									 //buffer strategy An area in the RAM for temporary storing the pixels in advance
  		BufferStrategy bs = getBufferStrategy();			 //java.awt.image and Canvas auto import Eclipse
  		if (bs == null){ 									 //if bs is not created then create it
- 			createBufferStrategy(3);						 //pretty much always at 3 instead of 2, for triple buffer in faster CPUs
+ 			createBufferStrategy(3);						 //pretty much always at 3
  			return;
  		}
+ 		
  	}
 
  	public static void main(String[] args) {

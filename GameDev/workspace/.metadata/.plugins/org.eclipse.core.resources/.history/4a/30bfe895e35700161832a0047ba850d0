@@ -57,6 +57,7 @@ import javax.swing.JFrame;
  			createBufferStrategy(3);						 //pretty much always at 3 instead of 2, for triple buffer in faster CPUs
  			return;
  		}
+ 		
  	}
 
  	public static void main(String[] args) {
