@@ -1,7 +1,9 @@
  package com.thedude.rain;
 
  import java.awt.Canvas;
- import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
@@ -57,6 +59,14 @@ import javax.swing.JFrame;
  			createBufferStrategy(3);						 //pretty much always at 3 instead of 2, for triple buffer in faster CPUs
  			return;
  		}
+ 		
+ 		Graphics g = bs.getDrawGraphics();					 //creating link between graphics and buffer (graphics context) java.awt
+ 		//***********your graphics goes here*****************
+ 		//g.setColor(Color.BLACK);							 //Always do this before you fill 
+ 		g.setColor(new Color(69, 97, 210));				 	 //Alternative way to get all colors (R,G,B)
+ 		g.fillRect(0, 0, getWidth(), getHeight());			 //using get width and height to make sure we fill the entire window
+ 		g.dispose();										 //Disposes all the graphics releases the system resources
+ 		bs.show();											 //buffer swapping 
  	}
 
  	public static void main(String[] args) {
