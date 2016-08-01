@@ -10,26 +10,30 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.thedude.rain.graphics.Screen;
+
 public class Game extends Canvas implements Runnable { //our class in sub-class of Canvas meaning its a component
 	private static final long serialVersionUID = 1L; //It's a convention of Java just do it to remove game warning in the declaration of class
 
 	//declaring the game frame resolution
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int scale = 1;
 
 	private Thread thread; //declare out thread
 	private JFrame frame; //from JFrame library import the frame
 	private boolean running = false; //declare our running for the game loop later used in start and stop method
-	
+
+	private Screen screen;
+
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);//An image with an accessible buffer of image data but we can't manipulate the image yet
-	private int[]  pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData(); //converting(casting) the image from BufferedImage type to and integer array now we can modify our image
-	
-	
+	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData(); //converting(casting) the image from BufferedImage type to and integer array now we can modify our image
+
 	//Class Constructor
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale); // here we use the resolution params by creating Dimension object called size
 		setPreferredSize(size); //Canvas method
+		screen = new Screen(width, height);
 		frame = new JFrame(); //creating the frame
 	}
 
@@ -67,11 +71,17 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			return;
 		}
 
+		screen.render();
+		for (int i = 0; i < pixels.length; i++) {
+			pixels[i] = screen.pixels[i];
+		}
+
 		Graphics g = bs.getDrawGraphics(); //creating link between graphics and buffer (graphics context) java.awt
 		//***********your graphics goes here*****************
 		//g.setColor(Color.BLACK);							 //Always do this before you fill 
-		g.setColor(new Color(69, 97, 210)); //Alternative way to get all colors (R,G,B)
-		g.fillRect(0, 0, getWidth(), getHeight()); //using get width and height to make sure we fill the entire window
+		//g.setColor(new Color(0, 0, 0)); //Alternative way to get all colors (R,G,B)
+		//g.fillRect(0, 0, getWidth(), getHeight()); //using get width and height to make sure we fill the entire window
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame 
 		g.dispose(); //Disposes all the graphics releases the system resources
 		bs.show(); //buffer swapping 
 	}

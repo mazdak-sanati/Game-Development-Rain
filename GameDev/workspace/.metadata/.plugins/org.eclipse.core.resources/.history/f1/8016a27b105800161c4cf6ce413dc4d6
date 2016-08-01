@@ -1,0 +1,11 @@
+package com.thedude.rain.graphics;
+
+public class Screen {
+	private int width, height;
+	public int[] pixles;
+	
+	public Screen(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+}
