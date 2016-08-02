@@ -38,12 +38,9 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale); // here we use the resolution parameters by creating Dimension object called size
 		setPreferredSize(size); //Canvas method
-		
 		screen = new Screen(width, height);
 		frame = new JFrame(); //creating the frame
 		key = new Keyboard(); //creating the keyboard object
-		
-		addKeyListener(key);
 	}
 
 	public synchronized void start() { //sync to avoid memory conflict
@@ -93,11 +90,8 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	}
 	int x=0, y=0; //temp
 	public void update() {
-		key.update();
-		if (key.up) y--;
-		if (key.down) y++;
-		if (key.right) x++;
-		if (key.left) x--;
+		x++; //temp
+		y++; //temp
 
 	}
 
