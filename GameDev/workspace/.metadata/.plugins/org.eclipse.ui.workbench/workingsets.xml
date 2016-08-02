@@ -4,5 +4,9 @@
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470072447009_1" label="Window Working Set" name="Aggregate for window 1470072447009"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470072732170_2" label="Window Working Set" name="Aggregate for window 1470072732170"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470073392685_3" label="Window Working Set" name="Aggregate for window 1470073392685"/>
+<<<<<<< HEAD
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470125190695_4" label="Window Working Set" name="Aggregate for window 1470118544375"/>
+=======
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1470118544375_4" label="Window Working Set" name="Aggregate for window 1470118544375"/>
+>>>>>>> implementation_arrayboundry
 </workingSetManager>
