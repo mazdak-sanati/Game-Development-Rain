@@ -6,7 +6,7 @@ public class Screen {
 	private int width, height;
 	public int[] pixels; // height * width = size of this array
 	public static final int TILESIZE = 16; //tile size 32 *32
-	public static final int MAP_SIZE = 64; //tile size 32 *32
+	public static final int MAP_SIZE = 8; //tile size 32 *32
 	public static final int MAP_SIZE_MASK = MAP_SIZE - 1; //tile size 32 *32
 
 	public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
