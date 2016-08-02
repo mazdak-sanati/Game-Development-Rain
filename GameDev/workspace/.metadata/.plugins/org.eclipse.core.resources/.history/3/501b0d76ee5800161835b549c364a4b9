@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class SpriteSheet {
 	private String path; // the path to the sprite-sheet
-	public final int SIZE;
+	private final int SIZE;
 	public int[] pixels;
 
 	public SpriteSheet(String path, int size) {
