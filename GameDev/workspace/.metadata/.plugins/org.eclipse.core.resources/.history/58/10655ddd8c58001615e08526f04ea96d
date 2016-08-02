@@ -19,7 +19,6 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	public static int width = 300;
 	public static int height = width / 16 * 9;
 	public static int scale = 3;
-	public static String title = "Rain";
 
 	private Thread thread; //declare out thread
 	private JFrame frame; //from JFrame library import the frame
@@ -75,8 +74,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000; //Important we increase the timer which is the same as changing the 1000 in if to 2000 and so on
-				//System.out.println(updates + "ups, " + frames + " fps.");
-				frame.setTitle(title + " | " + updates + "ups, " + frames + " fps."); //now you can see the fps and timer on the developer game frame
+				System.out.println(updates + "ups, " + frames + " fps.");
 				updates = 0;
 				frames = 0;
 			}
@@ -114,7 +112,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	public static void main(String[] args) {
 		Game game = new Game();
 		game.frame.setResizable(false); //we don't want our window to able to resize(graphical error):always the first think to apply to frame
-		game.frame.setTitle(Game.title); //title of our window
+		game.frame.setTitle("Rain"); //title of our window
 		game.frame.add(game); //adds a component to our frame. fills the window with something. game in this case
 		game.frame.pack(); //sets the size
 		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //when you hit the close(X) bottom it will terminate the application process.

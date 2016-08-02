@@ -24,7 +24,8 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	private Thread thread; //declare out thread
 	private JFrame frame; //from JFrame library import the frame
 	private boolean running = false; //declare our running for the game loop later used in start and stop method
-
+	
+	
 	private Screen screen;
 
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);//An image with an accessible buffer of image data but we can't manipulate the image yet
@@ -75,8 +76,8 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000; //Important we increase the timer which is the same as changing the 1000 in if to 2000 and so on
-				//System.out.println(updates + "ups, " + frames + " fps.");
-				frame.setTitle(title + " | " + updates + "ups, " + frames + " fps."); //now you can see the fps and timer on the developer game frame
+				System.out.println(updates + "ups, " + frames + " fps.");
+				frame .setTitle(arg0);
 				updates = 0;
 				frames = 0;
 			}

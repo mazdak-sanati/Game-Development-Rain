@@ -75,7 +75,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000; //Important we increase the timer which is the same as changing the 1000 in if to 2000 and so on
-				//System.out.println(updates + "ups, " + frames + " fps.");
+				System.out.println(updates + "ups, " + frames + " fps.");
 				frame.setTitle(title + " | " + updates + "ups, " + frames + " fps."); //now you can see the fps and timer on the developer game frame
 				updates = 0;
 				frames = 0;
