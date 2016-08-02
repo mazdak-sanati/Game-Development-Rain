@@ -90,17 +90,15 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			}
 		}
 		stop();
-	}
-	int x=0, y=0, zoom = 4; //temp
+	} 
+	int x=0, y=0; //temp
 	public void update() {
 		key.update();
 		if (key.up) y--;
 		if (key.down) y++;
 		if (key.right) x++;
 		if (key.left) x--;
-		if (key.zoom) zoom = 5; else if (!key.zoom) {
-			zoom = 4;
-		}
+		if (key.zoom) Screen.TILESIZE = 32;
 
 	}
 

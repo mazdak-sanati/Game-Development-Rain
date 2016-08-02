@@ -29,8 +29,7 @@ public class Screen {
 		}
 	}
 
-	public void render(int xOffset, int yOffset, int zoom) { //offsets are temp now
-		TILE_SIZE = zoom;
+	public void render(int xOffset, int yOffset) { //offsets are temp now
 		for (int y = 0; y < height; y++) { //filling the entire screen through next loop
 			int yy = y + yOffset; //we dont want to change the for loop
 			//if (yy < 0 || yy >= height) break;//this will stop rendering and fix the error for the ArrayOutOfBoundary crash,
@@ -38,6 +37,7 @@ public class Screen {
 				int xx = x + xOffset ;
 				//if (xx < 0 || xx >= width) break; //this will stop rendering and fix the error for the ArrayOutOfBoundary crash
 				//ALternative code optimization better fps specially in a for loop
+				//int tileIndex = (x / TILESIZE) + (y / TILESIZE) * MAP_SIZE;
 				int tileIndex = ((xx >> TILE_SIZE) & MAP_SIZE_MASK) + (((yy >> TILE_SIZE) & MAP_SIZE_MASK) * MAP_SIZE);// &: bitwise AND, same as: if  x/16 > 64 then return back to zero 
 				pixels[x + y * width] = tiles[tileIndex]; //color in hex increasing pixels 1 by one and changing their color
 			}

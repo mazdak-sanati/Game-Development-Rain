@@ -90,17 +90,14 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			}
 		}
 		stop();
-	}
-	int x=0, y=0, zoom = 4; //temp
+	} 
+	int x=0, y=0; //temp
 	public void update() {
 		key.update();
 		if (key.up) y--;
 		if (key.down) y++;
 		if (key.right) x++;
 		if (key.left) x--;
-		if (key.zoom) zoom = 5; else if (!key.zoom) {
-			zoom = 4;
-		}
 
 	}
 
@@ -112,7 +109,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		/*******************Pay attention to the chronological order of the following method calls  befire main***************/
 		screen.clear();
-		screen.render(x,y,zoom);
+		screen.render(x,y);
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
