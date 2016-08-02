@@ -20,7 +20,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	public static int width = 300;
 	public static int height = 168; //for tutorial purpose
 	//public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int scale = 2;
 	public static String title = "Rain";
 
 	private Thread thread; //declare out thread
