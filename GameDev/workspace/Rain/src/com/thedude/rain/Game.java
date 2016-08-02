@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	//declaring the game frame resolution
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 1;
+	public static int scale = 3;
 
 	private Thread thread; //declare out thread
 	private JFrame frame; //from JFrame library import the frame
@@ -31,7 +31,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 	//Class Constructor
 	public Game() {
-		Dimension size = new Dimension(width * scale, height * scale); // here we use the resolution params by creating Dimension object called size
+		Dimension size = new Dimension(width * scale, height * scale); // here we use the resolution parameters by creating Dimension object called size
 		setPreferredSize(size); //Canvas method
 		screen = new Screen(width, height);
 		frame = new JFrame(); //creating the frame
@@ -70,7 +70,8 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			createBufferStrategy(3); //pretty much always at 3 instead of 2, for triple buffer in faster CPUs
 			return;
 		}
-
+		/*******************Pay attention to the chronological order of the following method calls  befire main***************/
+		screen.clear();
 		screen.render();
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
