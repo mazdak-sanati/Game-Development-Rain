@@ -32,14 +32,12 @@ public class Screen {
 	public void render(int xOffset, int yOffset, int zoom) { //offsets are temp now
 		TILE_SIZE = zoom;
 		for (int y = 0; y < height; y++) { //filling the entire screen through next loop
-			int yy = y + yOffset; //we dont want to change the for loop
-			//if (yy < 0 || yy >= height) break;//this will stop rendering and fix the error for the ArrayOutOfBoundary crash,
+			int yp = y + yOffset;
+			if (yp < 0 || yp >= height) continue;
 			for (int x = 0; x < width; x++) {
-				int xx = x + xOffset ;
-				//if (xx < 0 || xx >= width) break; //this will stop rendering and fix the error for the ArrayOutOfBoundary crash
-				//ALternative code optimization better fps specially in a for loop
-				int tileIndex = ((xx >> TILE_SIZE) & MAP_SIZE_MASK) + (((yy >> TILE_SIZE) & MAP_SIZE_MASK) * MAP_SIZE);// &: bitwise AND, same as: if  x/16 > 64 then return back to zero 
-				pixels[x + y * width] = tiles[tileIndex]; //color in hex increasing pixels 1 by one and changing their color
+				int xp = x + xOffset;
+				if (xp < 0 || xp >= width) continue;
+				pixels[xp + yp * width] = Sprite.grass.pixels [(x & 15) + (y & 15) * Sprite.grass.SIZE];
 			}
 		}
 	}
