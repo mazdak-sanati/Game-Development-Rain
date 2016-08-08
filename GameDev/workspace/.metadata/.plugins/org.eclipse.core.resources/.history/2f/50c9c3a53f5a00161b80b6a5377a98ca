@@ -1,0 +1,35 @@
+package com.thedude.rain.level;
+
+import com.thedude.rain.graphics.Screen;
+
+public class Level { //BASE LEVEL OTHE SUBCLASSES WILL INHERET THIS LEVEL
+	
+	private int width, height;
+	private int[] tiles;
+	
+	public Level(int width, int height) { //this constructor will build level
+		this.width = width;
+		this.height = height;
+		tiles = new int[width * height];
+		generateLevel();
+	}
+
+	public Level(String path) { //this constructor will load level from a path
+		loadLevel(path);
+	}
+	
+	private void loadLevel(String path) {
+	}
+
+	private void generateLevel() {
+	}
+	
+	public void update() { //updates the level, like AI, entities and so on ...
+		
+	}
+	
+	public void render(int xScroll, int yScroll, Screen screen) {
+		
+	}
+
+}

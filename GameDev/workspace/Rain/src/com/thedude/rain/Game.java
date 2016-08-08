@@ -20,7 +20,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	public static int width = 300;
 	public static int height = 168; //for tutorial purpose
 	//public static int height = width / 16 * 9;
-	public static int scale = 2;
+	public static int scale = 4;
 	public static String title = "Rain";
 
 	private Thread thread; //declare out thread
@@ -95,10 +95,10 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	int x=0, y=0, zoom = 1; //temp
 	public void update() {
 		key.update();
-		if (key.up) y++;
-		if (key.down) y--;
-		if (key.right) x--;
-		if (key.left) x++;
+		if (key.up) y--;
+		if (key.down) y++;
+		if (key.right) x++;
+		if (key.left) x--;
 		if (key.zoom) zoom = 2; else if (!key.zoom) {
 			zoom = 1;
 		}
