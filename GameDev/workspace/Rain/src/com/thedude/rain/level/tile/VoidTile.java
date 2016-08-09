@@ -10,7 +10,7 @@ public class VoidTile extends Tile {
 	}
 	
 	public void render(int x, int y, Screen screen) {
-		screen.renderTile(x, y, this);
+		screen.renderTile( x << 4, y << 4, this); // << 4 to neglect the effect of offset in Screen class
 	}
 
 }

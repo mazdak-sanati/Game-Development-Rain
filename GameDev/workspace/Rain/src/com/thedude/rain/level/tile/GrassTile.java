@@ -10,8 +10,8 @@ public class GrassTile extends Tile {
 	}
 
 	public void render(int x, int y, Screen screen) {
-		screen.renderTile(x, y, this);// we need tile not pixels thats why we need to do mathematical calculation to
-										// change the type
+		screen.renderTile(x << 4, y << 4, this);// we need tile not pixels thats why we need to do mathematical calculation to
+										// change the type << 4 to neglect the effect of offset in Screen class
 		
 	}
 

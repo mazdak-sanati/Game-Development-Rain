@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 
 import com.thedude.rain.graphics.Screen;
 import com.thedude.rain.input.Keyboard;
+import com.thedude.rain.level.Level;
+import com.thedude.rain.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable { //our class in sub-class of Canvas meaning its a component
 	private static final long serialVersionUID = 1L; //It's a convention of Java just do it to remove game warning in the declaration of class
@@ -25,7 +27,8 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 	private Thread thread; //declare out thread
 	private JFrame frame; //from JFrame library import the frame
-	private Keyboard key; //import from the packge
+	private Keyboard key; //import from the package
+	private Level level; //1 level load at a time
 	private boolean running = false; //declare our running for the game loop later used in start and stop method
 
 	private Screen screen;
@@ -42,7 +45,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		screen = new Screen(width, height);
 		frame = new JFrame(); //creating the frame
 		key = new Keyboard(); //creating the keyboard object
-		
+		level = new RandomLevel(64, 64);
 		addKeyListener(key);
 	}
 
@@ -99,11 +102,9 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		if (key.down) y++;
 		if (key.right) x++;
 		if (key.left) x--;
-		if (key.zoom) zoom = 2; else if (!key.zoom) {
-			zoom = 1;
 		}
 
-	}
+
 
 	public void render() { //buffer strategy An area in the RAM for temporary storing the pixels in advance
 		BufferStrategy bs = getBufferStrategy(); //java.awt.image and Canvas auto import Eclipse
@@ -111,18 +112,16 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			createBufferStrategy(3); //pretty much always at 3 instead of 2, for triple buffer in faster CPUs
 			return;
 		}
-		/*******************Pay attention to the chronological order of the following method calls  befire main***************/
+		/*******************Pay attention to the chronological order of the following method calls before main***************/
 		screen.clear();
-		screen.render(x,y,zoom);
+		level.render(x, y, screen);
+		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
 
 		Graphics g = bs.getDrawGraphics(); //creating link between graphics and buffer (graphics context) java.awt
 		//***********your graphics goes here*****************
-		//g.setColor(Color.BLACK);							 //Always do this before you fill 
-		//g.setColor(new Color(0, 0, 0)); //Alternative way to get all colors (R,G,B)
-		//g.fillRect(0, 0, getWidth(), getHeight()); //using get width and height to make sure we fill the entire window
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame 
 		g.dispose(); //Disposes all the graphics releases the system resources
 		bs.show(); //buffer swapping 

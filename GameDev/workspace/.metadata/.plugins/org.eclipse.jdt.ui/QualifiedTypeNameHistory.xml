@@ -3,4 +3,8 @@
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="com.thedude.rain.graphics.SpriteSheet"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="com.thedude.rain.graphics.Sprite"/>
+<fullyQualifiedTypeName name="com.thedude.rain.level.tile.Tile"/>
+<fullyQualifiedTypeName name="com.thedude.rain.level.Level"/>
+<fullyQualifiedTypeName name="com.thedude.rain.level.RandomLevel"/>
 </qualifiedTypeNameHistroy>

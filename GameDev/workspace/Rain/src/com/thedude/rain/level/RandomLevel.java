@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomLevel extends Level { // this is sort of a random class template
 
-	private final Random random = new Random();
+	private static final Random random = new Random();
 
 	public RandomLevel(int width, int height) { // we used the int,int constructor inheriting from LEvel class, because
 												// we want to generate and not import a level
