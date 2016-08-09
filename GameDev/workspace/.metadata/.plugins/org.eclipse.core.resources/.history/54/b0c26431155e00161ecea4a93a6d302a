@@ -113,7 +113,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			if (key.right) x++;
 			if (key.left) x--;	
 		}//remove later only for inverted
-	}
+		}
 
 
 

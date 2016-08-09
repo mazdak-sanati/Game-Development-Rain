@@ -6,15 +6,15 @@ import java.awt.event.KeyListener;
 public class Keyboard implements KeyListener{
 	
 	private boolean[] keys = new boolean[120];
-	public boolean up, down, left ,right, invert, normal;
+	private boolean[] types = new boolean[80];
+	public boolean up, down, left ,right, invert;
 	
 	public void update() {
 		up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
 		down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
 		left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
 		right = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
-		invert = keys[KeyEvent.VK_I] && keys[KeyEvent.VK_SHIFT];
-		normal = keys[KeyEvent.VK_N] && keys[KeyEvent.VK_SHIFT];
+		invert = types[KeyEvent.VK_I] && types[KeyEvent.VK_SHIFT];
 		
 	/*	for (int i= 0; i < keys.length; i++) {
 			if (keys[i]){
@@ -35,7 +35,7 @@ public class Keyboard implements KeyListener{
 
 
 	public void keyTyped(KeyEvent e) {
-		
+		types[e.getKeyCode()] = true;
 	}
 
 }

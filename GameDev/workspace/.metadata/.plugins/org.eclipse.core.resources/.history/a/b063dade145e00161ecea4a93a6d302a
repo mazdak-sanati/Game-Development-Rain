@@ -96,24 +96,24 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		stop();
 	}
 	int x=0, y=0, zoom = 1; //temp
-	boolean inverted = false;//remove later only for inverted
 	public void update() {
 		key.update();
-		if (key.invert ) inverted = true;//remove later only for inverted
-		if (key.normal) inverted = false;//remove later only for inverted
-		if (inverted) {//remove later only for inverted
-			if (key.up) y++;//remove later only for inverted
-			if (key.down) y--;//remove later only for inverted
-			if (key.right) x--;//remove later only for inverted
-			if (key.left) x++;//remove later only for inverted
-		}//remove later only for inverted
-		else {//remove later only for inverted
+		boolean inverted = false;
+		if (key.invert ) inverted = true;
+		if (key.normal) inverted = false;
+		if (inverted) {
+			if (key.up) y++;
+			if (key.down) y--;
+			if (key.right) x--;
+			if (key.left) x++;
+		}
+		else {
 			if (key.up) y--;
 			if (key.down) y++;
 			if (key.right) x++;
 			if (key.left) x--;	
-		}//remove later only for inverted
-	}
+		}
+		}
 
 
 

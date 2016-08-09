@@ -1,0 +1,20 @@
+package com.thedude.rain.entity;
+
+import java.util.Random;
+
+import com.thedude.rain.graphics.Screen;
+import com.thedude.rain.level.Level;
+
+public class Entity {
+
+	public int x,y; //its redundant if entity doesn't have a sprite
+	private boolean removed = false; //if its removed from the level
+	protected Level level;
+	protected final Random random = new Random();
+	
+	public void update() { //linked to game.java update()
+	}
+	
+	public void render (Screen screen){ //entities can move so we don't need constant render position here like xScroll and yScroll
+	}
+}
