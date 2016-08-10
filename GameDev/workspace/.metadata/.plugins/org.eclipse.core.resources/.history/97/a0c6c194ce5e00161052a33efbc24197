@@ -96,11 +96,12 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		stop();
 	}
 	int x=0, y=0;
+	int count = 0;  //temp
 	public void update() {
 		key.update();
 			if (key.up) y--;
-			if (key.down) y++;
-			if (key.right) x++;
+			if (key.down) {y++; count++; System.out.println("you pressed key" + count+ "times");}
+			if (key.right) {x++; count++; System.out.println("you pressed key" + count+ "times");}
 			if (key.left) x--;	
 	}
 

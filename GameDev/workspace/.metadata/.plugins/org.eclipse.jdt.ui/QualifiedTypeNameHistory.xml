@@ -5,6 +5,8 @@
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="com.thedude.rain.graphics.Sprite"/>
 <fullyQualifiedTypeName name="com.thedude.rain.level.tile.Tile"/>
-<fullyQualifiedTypeName name="com.thedude.rain.level.Level"/>
 <fullyQualifiedTypeName name="com.thedude.rain.level.RandomLevel"/>
+<fullyQualifiedTypeName name="com.thedude.rain.level.Level"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="com.thedude.rain.graphics.Screen"/>
 </qualifiedTypeNameHistroy>

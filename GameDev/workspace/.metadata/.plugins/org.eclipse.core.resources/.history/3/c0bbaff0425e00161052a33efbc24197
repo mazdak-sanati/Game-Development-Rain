@@ -95,7 +95,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		stop();
 	}
-	int x=0, y=0;
+	int x=0, y=0, zoom = 1; //temp
 	public void update() {
 		key.update();
 			if (key.up) y--;

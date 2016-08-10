@@ -51,7 +51,7 @@ public class Level { // BASE LEVEL OTHE SUBCLASSES WILL INHERET THIS LEVEL
 
 	/*placing the tile*/
 	public Tile getTile(int x, int y) { // return a tile
-		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile; // always first in the method to a avoid
+		if (x < -16 || y < 0 || x > width || y > height) return Tile.voidTile; // always first in the method to a avoid
 																				// crash
 		if (tiles[x + y * width] == 0) return Tile.grass;
 		return Tile.voidTile; // else return void tile when out of map don't render
