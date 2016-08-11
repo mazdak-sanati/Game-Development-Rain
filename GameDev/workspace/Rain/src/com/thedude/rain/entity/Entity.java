@@ -5,7 +5,8 @@ import java.util.Random;
 import com.thedude.rain.graphics.Screen;
 import com.thedude.rain.level.Level;
 
-public abstract class Entity {//abstract creates the template
+public abstract class Entity {// abstract creates the template, entity is everything that is not a tile(part of the
+								// map), it can be time, player, creatures, ...
 
 	public int x, y; // its redundant if entity doesn't have a sprite
 	private boolean removed = false; // if its removed from the level
@@ -18,14 +19,13 @@ public abstract class Entity {//abstract creates the template
 	public void render(Screen screen) { // entities can move so we don't need constant render position here like xScroll
 										// and yScroll
 	}
-	
-	
+
 	public void remove() {
-		//Remove from Level whenever need
+		// Remove from Level whenever need
 		removed = true;
 	}
-	
-	public boolean isRemoved() { //check if its removed or not
+
+	public boolean isRemoved() { // check if its removed or not
 		return removed;
 	}
 }

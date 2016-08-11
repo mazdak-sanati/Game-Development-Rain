@@ -1,0 +1,25 @@
+package com.thedude.rain.entity.mob;
+
+import com.thedude.rain.entity.Entity;
+import com.thedude.rain.graphics.Sprite;
+
+public abstract class Mob extends Entity { // mob is a group of enities so basically everything thats is bigger than one
+											// tile size, remember that mob is entity not tile
+
+	protected Sprite sprite;
+	protected int dir = 0; // 0 north, 1 east, 2 south, 3 west
+	protected boolean moving = false; // moving animations
+
+	public void move() {
+
+	}
+
+	public void update() {
+
+	}
+
+	private boolean collision() {
+		return false;
+	}
+
+}

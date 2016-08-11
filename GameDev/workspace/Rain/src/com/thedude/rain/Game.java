@@ -3,6 +3,7 @@ package com.thedude.rain;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -10,6 +11,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.thedude.rain.entity.mob.Player;
 import com.thedude.rain.graphics.Screen;
 import com.thedude.rain.input.Keyboard;
 import com.thedude.rain.level.Level;
@@ -29,6 +31,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	private JFrame frame; //from JFrame library import the frame
 	private Keyboard key; //import from the package
 	private Level level; //1 level load at a time
+	private Player player; //create player object
 	private boolean running = false; //declare our running for the game loop later used in start and stop method
 
 	private Screen screen;
@@ -43,9 +46,11 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		setPreferredSize(size); //Canvas method
 		
 		screen = new Screen(width, height);
-		frame = new JFrame(); //creating the frame
-		key = new Keyboard(); //creating the keyboard object
-		level = new RandomLevel(64, 64);
+		frame = new JFrame(); //Instantiate the frame
+		key = new Keyboard(); //Instantiate the keyboard object
+		level = new RandomLevel(64, 64);//Instantiate the level
+		player = new Player(key); //Instantiate the player
+		
 		addKeyListener(key);
 	}
 
@@ -95,13 +100,10 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		stop();
 	}
-	int x=0, y=0;
+	
 	public void update() {
 		key.update();
-			if (key.up) y--;
-			if (key.down) y++;
-			if (key.right) x++;
-			if (key.left) x--;	
+		player.update(); //now we are changing x and y from keyboard from player and not the map
 	}
 
 
@@ -114,7 +116,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		/*******************Pay attention to the chronological order of the following method calls before main***************/
 		screen.clear();
-		level.render(x, y, screen);
+		level.render(player.x, player.y, screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -123,6 +125,9 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		Graphics g = bs.getDrawGraphics(); //creating link between graphics and buffer (graphics context) java.awt
 		//***********your graphics goes here*****************
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame 
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Verdana", 0, 50));
+		g.drawString("X: " +  player.x + "Y:" + player.y , 350 , 300);
 		g.dispose(); //Disposes all the graphics releases the system resources
 		bs.show(); //buffer swapping 
 	}
