@@ -114,7 +114,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		/*******************Pay attention to the chronological order of the following method calls before main***************/
 		screen.clear();
-		level.render(player.x, player.y, screen);
+		level.render(x, y, screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

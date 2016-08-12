@@ -10,7 +10,6 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
-import com.thedude.rain.entity.mob.Player;
 import com.thedude.rain.graphics.Screen;
 import com.thedude.rain.input.Keyboard;
 import com.thedude.rain.level.Level;
@@ -30,7 +29,6 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 	private JFrame frame; //from JFrame library import the frame
 	private Keyboard key; //import from the package
 	private Level level; //1 level load at a time
-	private Player player;
 	private boolean running = false; //declare our running for the game loop later used in start and stop method
 
 	private Screen screen;
@@ -48,7 +46,6 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		frame = new JFrame(); //creating the frame
 		key = new Keyboard(); //creating the keyboard object
 		level = new RandomLevel(64, 64);
-		player = new Player(key);
 		addKeyListener(key);
 	}
 
@@ -101,7 +98,10 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 	public void update() {
 		key.update();
-		player.update();	
+			if (key.up) y--;
+			if (key.down) y++;
+			if (key.right) x++;
+			if (key.left) x--;	
 	}
 
 
@@ -114,7 +114,7 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		/*******************Pay attention to the chronological order of the following method calls before main***************/
 		screen.clear();
-		level.render(player.x, player.y, screen);
+		level.render(x, y, screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

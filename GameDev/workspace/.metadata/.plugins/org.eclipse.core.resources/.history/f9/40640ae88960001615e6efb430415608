@@ -1,7 +1,5 @@
 package com.thedude.rain.entity.mob;
 
-import com.thedude.rain.input.Keyboard;
-
 public class Player extends Mob {
 	private Keyboard input;
 

@@ -1,8 +1,0 @@
-package com.thedude.rain.level.tile;
-
-public class Tile { //each tile should have position, a sprite, rendered, solid or not (collide or NOT)
-	
-	public int x, y; //for the position of the tile
-	public Sprite sprite
-
-}

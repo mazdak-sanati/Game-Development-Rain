@@ -1,8 +1,0 @@
-package com.thedude.rain.graphics;
-
-public class SpriteSheet {
-	private String path; //the path to the spritesheet
-	private final int SIZE;
-	public int[] pixels;
-	
-}

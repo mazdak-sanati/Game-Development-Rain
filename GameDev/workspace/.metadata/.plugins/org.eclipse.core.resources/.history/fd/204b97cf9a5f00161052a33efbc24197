@@ -1,7 +1,0 @@
-package com.thedude.rain.entity.mob;
-
-import com.thedude.rain.entity.Entity;
-
-public abstract class Mob extends Entity{
-	
-}

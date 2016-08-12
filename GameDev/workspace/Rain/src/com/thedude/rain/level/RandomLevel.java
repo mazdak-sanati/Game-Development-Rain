@@ -15,7 +15,7 @@ public class RandomLevel extends Level { // this is sort of a random class templ
 	protected void generateLevel() {
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				tiles[x + y * width] =  random.nextInt(4); // random from zero to (arg) the random output will represent
+				tiles[x + y * width] = random.nextInt(4); // random from zero to (arg) the random output will represent
 															// the type of tile e.g. grass,water,wall,etc
 			}
 		}
