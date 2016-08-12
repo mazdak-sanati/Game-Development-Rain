@@ -80,7 +80,7 @@ public class Player extends Mob {
 			if (anim % 20 > 10){
 				sprite = Sprite.player_side_1;
 			} else {
-				sprite = Sprite.player_side_2;
+				sprite = Sprite.player_sided_2;
 			}
 			}			
 			flip = 1;
