@@ -1,5 +1,7 @@
 package com.thedude.rain.entity.mob;
 
+import com.thedude.rain.graphics.Screen;
+import com.thedude.rain.graphics.Sprite;
 import com.thedude.rain.input.Keyboard;
 
 public class Player extends Mob {
@@ -9,19 +11,30 @@ public class Player extends Mob {
 		this.input = input;
 	}
 	
+	
+
 	public Player(int x, int y, Keyboard input) {
 		this.x = x;
 		this.y = y;
 		this.input = input;
 	}
-	
+
 	public void update() {
-		if(input.up) y--;
-		if(input.down) y++;
-		if(input.left) x--;
-		if(input.right) x++;
+		int xa = 0, ya = 0; // they will update x and y in collision from Mob::move() method that player inherit from Entity
+		if (input.up) ya--;
+		if (input.down) ya++;
+		if (input.left) xa--;
+		if (input.right) xa++;
+
+		if (xa != 0 || ya != 0) move(xa, ya); 
 	}
-	
-	public void render() {
+
+	public void render(Screen screen) {
+		int xx = x - 16;
+		int yy = y - 16;
+		screen.renderPlayer(xx, yy, Sprite.player0);
+		screen.renderPlayer(xx + 16, yy, Sprite.player1);
+		screen.renderPlayer(xx, yy + 16, Sprite.player2);
+		screen.renderPlayer(xx + 16, yy + 16, Sprite.player3);
 	}
 }

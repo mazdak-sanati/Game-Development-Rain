@@ -3,6 +3,7 @@ package com.thedude.rain;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -10,9 +11,11 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.thedude.rain.entity.mob.Player;
 import com.thedude.rain.graphics.Screen;
 import com.thedude.rain.input.Keyboard;
 import com.thedude.rain.level.Level;
+import com.thedude.rain.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable { //our class in sub-class of Canvas meaning its a component
 	private static final long serialVersionUID = 1L; //It's a convention of Java just do it to remove game warning in the declaration of class
@@ -26,8 +29,9 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 	private Thread thread; //declare out thread
 	private JFrame frame; //from JFrame library import the frame
-	private Keyboard key; //import from the packge
-	private Level level;
+	private Keyboard key; //import from the package
+	private Level level; //1 level load at a time
+	private Player player;
 	private boolean running = false; //declare our running for the game loop later used in start and stop method
 
 	private Screen screen;
@@ -44,7 +48,8 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		screen = new Screen(width, height);
 		frame = new JFrame(); //creating the frame
 		key = new Keyboard(); //creating the keyboard object
-		
+		level = new RandomLevel(64, 64);
+		player = new Player(key);
 		addKeyListener(key);
 	}
 
@@ -94,18 +99,13 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		stop();
 	}
-	int x=0, y=0, zoom = 1; //temp
+
 	public void update() {
 		key.update();
-		if (key.up) y--;
-		if (key.down) y++;
-		if (key.right) x++;
-		if (key.left) x--;
-		if (key.zoom) zoom = 2; else if (!key.zoom) {
-			zoom = 1;
-		}
-
+		player.update();	
 	}
+
+
 
 	public void render() { //buffer strategy An area in the RAM for temporary storing the pixels in advance
 		BufferStrategy bs = getBufferStrategy(); //java.awt.image and Canvas auto import Eclipse
@@ -113,8 +113,9 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 			createBufferStrategy(3); //pretty much always at 3 instead of 2, for triple buffer in faster CPUs
 			return;
 		}
-		/*******************Pay attention to the chronological order of the following method calls  befire main***************/
+		/*******************Pay attention to the chronological order of the following method calls before main***************/
 		screen.clear();
+		level.render(player.x, player.y, screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -122,10 +123,10 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 		Graphics g = bs.getDrawGraphics(); //creating link between graphics and buffer (graphics context) java.awt
 		//***********your graphics goes here*****************
-		//g.setColor(Color.BLACK);							 //Always do this before you fill 
-		//g.setColor(new Color(0, 0, 0)); //Alternative way to get all colors (R,G,B)
-		//g.fillRect(0, 0, getWidth(), getHeight()); //using get width and height to make sure we fill the entire window
-		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame 
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("verdana", 0, 50));
+		g.drawString("X: " + player.x + "Y: " player.y, 350, 300);
 		g.dispose(); //Disposes all the graphics releases the system resources
 		bs.show(); //buffer swapping 
 	}

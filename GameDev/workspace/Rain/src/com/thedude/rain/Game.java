@@ -3,6 +3,7 @@ package com.thedude.rain;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -114,7 +115,10 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 		}
 		/*******************Pay attention to the chronological order of the following method calls before main***************/
 		screen.clear();
-		level.render(player.x, player.y, screen);
+		int xScroll = player.x - screen.width / 2;
+		int yScroll = player.y - screen.height / 2;
+		level.render(xScroll, yScroll, screen);
+		player.render(screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -122,7 +126,10 @@ public class Game extends Canvas implements Runnable { //our class in sub-class 
 
 		Graphics g = bs.getDrawGraphics(); //creating link between graphics and buffer (graphics context) java.awt
 		//***********your graphics goes here*****************
-		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame 
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), null); //this way we input our screen on top of frame
+		//g.setColor(Color.WHITE);
+		//g.setFont(new Font("verdana", 0, 50));
+		//g.drawString("X: " + player.x + "Y: " +  player.y, 350, 300);
 		g.dispose(); //Disposes all the graphics releases the system resources
 		bs.show(); //buffer swapping 
 	}

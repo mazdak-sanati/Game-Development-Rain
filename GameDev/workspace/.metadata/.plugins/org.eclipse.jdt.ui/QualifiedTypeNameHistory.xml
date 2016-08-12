@@ -9,11 +9,11 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="com.thedude.rain.graphics.Screen"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="com.thedude.rain.entity.Entity"/>
-<fullyQualifiedTypeName name="com.thedude.rain.graphics.Sprite"/>
 <fullyQualifiedTypeName name="com.thedude.rain.entity.mob.Mob"/>
-<fullyQualifiedTypeName name="com.thedude.rain.entity.mob.Player"/>
-<fullyQualifiedTypeName name="com.thedude.rain.input.Keyboard"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
+<fullyQualifiedTypeName name="com.thedude.rain.input.Keyboard"/>
+<fullyQualifiedTypeName name="com.thedude.rain.entity.Entity"/>
+<fullyQualifiedTypeName name="com.thedude.rain.graphics.Sprite"/>
+<fullyQualifiedTypeName name="com.thedude.rain.entity.mob.Player"/>
 </qualifiedTypeNameHistroy>
