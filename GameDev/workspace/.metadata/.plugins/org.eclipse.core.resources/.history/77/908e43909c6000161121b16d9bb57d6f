@@ -10,7 +10,6 @@ public class Player extends Mob {
 
 	public Player(Keyboard input) {
 		this.input = input;
-		sprite = Sprite.player_forward;
 	}
 	
 	
@@ -19,7 +18,6 @@ public class Player extends Mob {
 		this.x = x;
 		this.y = y;
 		this.input = input;
-		sprite = Sprite.player_forward;
 	}
 
 	public void update() {
@@ -33,12 +31,12 @@ public class Player extends Mob {
 	}
 
 	public void render(Screen screen) {
-			
-		if (dir == 0) sprite = Sprite.player_forward;
-		if (dir == 1) sprite = Sprite.player_right;
-		if (dir == 2) sprite = Sprite.player_back;
-		if (dir == 3) sprite = Sprite.player_left;
-		screen.renderPlayer(x-16, y-16, sprite);
+		
+		sprite = Sprite.player_forward;
+		if (dir == 0) screen.renderPlayer(x -16 , y - 16, Sprite.player_back);
+		if (dir == 1) screen.renderPlayer(x -16 , y - 16, Sprite.player_right);
+		if (dir == 2) screen.renderPlayer(x -16 , y - 16, Sprite.player_forward);
+		if (dir == 3) screen.renderPlayer(x -16 , y - 16, Sprite.player_left);
 
 	}
 }

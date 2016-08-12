@@ -22,15 +22,13 @@ public class Sprite {
 	// tile in
 	// sprite-sheet
 	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
-
-	public static Sprite player_forward = new Sprite(32, 0, 5, SpriteSheet.tiles); // we will now create the entire player
-																			// sprite in one go and since the size is
-																			// now 32, our position for x and y are
-																			// Halved
-	public static Sprite player_back = new Sprite(32, 2, 5, SpriteSheet.tiles);
-	public static Sprite player_left = new Sprite(32, 3, 5, SpriteSheet.tiles);
-	public static Sprite player_right = new Sprite(32, 1, 5, SpriteSheet.tiles); 
+	public static Sprite player0 = new Sprite(16, 0, 9, SpriteSheet.tiles);
+	public static Sprite player1 = new Sprite(16, 1, 10, SpriteSheet.tiles);
+	public static Sprite player2 = new Sprite(16, 0, 11, SpriteSheet.tiles);
+	public static Sprite player3 = new Sprite(16, 1, 11, SpriteSheet.tiles);
 	
+	//public static Sprite player = new Sprite(32, color);
+
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
 		pixels = new int[SIZE * SIZE]; // initiate the pixels
