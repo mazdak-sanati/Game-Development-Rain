@@ -37,10 +37,7 @@ public class Player extends Mob {
 		if (dir == 0) sprite = Sprite.player_forward;
 		if (dir == 1 || dir == 3) sprite = Sprite.player_side;
 		if (dir == 2) sprite = Sprite.player_back;
-		if (dir == 3) {
-			sprite = Sprite.player_side;	
-			flip = 1;
-		}
+		if (dir == 3) flip = 1;
 		
 		screen.renderPlayer(x-16, y-16, sprite, flip);
 
